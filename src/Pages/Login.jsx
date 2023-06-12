@@ -67,6 +67,7 @@ function LoginForm() {
             userID: result.user.uid,
             username: result.user.displayName,
             usermailID: result.user.email,
+            userPhotoUrl: result.user.photoURL,
             userRole: "student"
           })
         })

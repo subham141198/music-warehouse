@@ -6,7 +6,6 @@ import LoginForm from "../Pages/Login";
 import RegisterForm from "../Pages/Register";
 import { HelmetProvider } from 'react-helmet-async';
 import Main from "../Template/Main";
-import Blog from "../Pages/Blog";
 import AdminRoute from "./AdminRoute";
 import Homepage from "../Pages/Home";
 import AllUser from "../Components/Dashboard/Admin/AllUser";
@@ -14,23 +13,32 @@ import AddClass from "../Components/Dashboard/Instructor/AddClass";
 import InstructorRoute from "./InstructorRoute";
 import AllClassApproval from "../Components/Dashboard/Admin/AllClassApproval";
 import AllClassOfInstructor from "../Components/Dashboard/Instructor/AllClass";
+import Instructor from "../Pages/Instructor";
+import ErrorPage from "../Pages/404";
+import Classes from "../Pages/MusicClass";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage/>,
     children: [
       {
         path: "/",
         element: <Homepage />,
+
       },
       {
-        path: "/login",
+        path: "login",
         element: <LoginForm />,
       },
       {
-        path: "/register",
+        path: "register",
         element: <RegisterForm />,
+      },
+      {
+        path: "instructors",
+        element: <Instructor />,
       },
       {
         path: "allusers",
@@ -47,34 +55,11 @@ export const router = createBrowserRouter([
       {
         path: "allclasses",
         element : <InstructorRoute><AllClassOfInstructor></AllClassOfInstructor></InstructorRoute>
+      },
+      {
+        path: "classes",
+        element : <Classes></Classes>
       }
     ]
   }
-  // {
-  //   path: 'dashboard',
-  //   element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-  //   children: [
-  //     {
-  //       path: 'mycart',
-  //       element: <MyCart></MyCart>
-  //     },
-  //     {
-  //       path: 'payment',
-  //       element: <Payment></Payment>
-  //     },
-  //     // admin routes
-  //     {
-  //       path: 'allusers',
-  //       element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
-  //     },
-  //     {
-  //       path: 'addItem',
-  //       element: <AdminRoute><AddItem></AddItem></AdminRoute>
-  //     },
-  //     {
-  //       path: 'manageitems',
-  //       element: <AdminRoute><ManageItems></ManageItems></AdminRoute>
-  //     }
-  //   ]
-  // }
 ]);

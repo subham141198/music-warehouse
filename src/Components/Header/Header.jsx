@@ -53,17 +53,14 @@ function Header(props) {
             <Nav className="mr-auto"></Nav>
             <Nav className="me-auto">
               <Nav.Link href="/">Home</Nav.Link>
-              {user && !isAdmin && !isInstructor && <>
-                <Nav.Link href="/new">Add a Toy</Nav.Link>
-                <Nav.Link href="/mytoys">My Toys</Nav.Link>
-              </>
-              }
+              <Nav.Link href="/instructors">Instructors</Nav.Link>
+              <Nav.Link href="/classes">Classes</Nav.Link>
               {user && !isAdmin && !isInstructor &&
                 <>
                   <NavDropdown title="Dashboard" id="collasible-nav-dropdown">
-                    <NavDropdown.Item href="/all">All Users</NavDropdown.Item>
+                    <NavDropdown.Item href="/myclasses">My Classes</NavDropdown.Item>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item href="/allclassapproval">All Course</NavDropdown.Item>
+                    <NavDropdown.Item href="/enrolledclasses">My Enrolled Classes</NavDropdown.Item>
                   </NavDropdown>
                 </>
               }

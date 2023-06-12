@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
-import Table from 'react-bootstrap/Table'
+import {Table, Alert,Spinner} from 'react-bootstrap'
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { useContext } from "react";
@@ -9,7 +9,7 @@ import { useContext } from "react";
 
 export default function AllClassApproval() {
     const [axiosSecure] = useAxiosSecure();
-    const { data: classes = [], refetch } = useQuery(['classes'], async () => {
+    const { data: classes = [], refetch, isLoading } = useQuery(['classes'], async () => {
         const res = await axiosSecure.get('/class/admin')
         return res.data;
     })
@@ -38,37 +38,39 @@ export default function AllClassApproval() {
     }
     const handlereject = singleClass => {
         Swal.fire({
-            title: 'Submit your Github username',
+            title: 'Submit Your Feedback Here',
             input: 'text',
             inputAttributes: {
-              autocapitalize: 'off'
+                autocapitalize: 'off'
             },
             showCancelButton: true,
-            confirmButtonText: 'Look up',
+            confirmButtonText: 'Send Feedback',
             showLoaderOnConfirm: true,
-            preConfirm: (login) => {
-              return fetch(`//api.github.com/users/${login}`)
-                .then(response => {
-                  if (!response.ok) {
-                    throw new Error(response.statusText)
-                  }
-                  return response.json()
-                })
-                .catch(error => {
-                  Swal.showValidationMessage(
-                    `Request failed: ${error}`
-                  )
-                })
+            preConfirm: async (feedbackMsg) => {
+                try {
+
+                    await axiosSecure.put(`/class/admin/${singleClass._id}`, { adminFeedback: `${feedbackMsg}` }).then((response) => {
+                        if (!response) {
+                            throw new Error(response.statusText)
+                        }
+                        return response
+                    });
+                } catch (error) {
+                    Swal.showValidationMessage(
+                        `Request failed: ${error}`
+                    );
+                }
             },
             allowOutsideClick: () => !Swal.isLoading()
-          }).then((result) => {
+        }).then((result) => {
+            console.log(result)
             if (result.isConfirmed) {
-              Swal.fire({
-                title: `${result.value.login}'s avatar`,
-                imageUrl: result.value.avatar_url
-              })
+                refetch();
+                Swal.fire({
+                    title: `Feedback Sent`,
+                })
             }
-          })
+        })
     }
     return (
         <>
@@ -85,7 +87,8 @@ export default function AllClassApproval() {
                     </tr>
                 </thead>
                 <tbody>
-                    {
+                {isLoading && <td><Spinner animation="border" variant="primary" size="lg"/></td>}
+                    {   classes ?
                         classes.map((eachClass, index) => <tr key={eachClass._id}>
                             <th>{index + 1}</th>
                             <td>{eachClass.className}</td>
@@ -95,12 +98,11 @@ export default function AllClassApproval() {
 
                             <td>{
                                 eachClass.approval === "pending" ?
-                                    <><button className="btn btn-outline-success me-3" onClick={() => { handleapprove(eachClass) }} ><i className="fa-solid fa-thumbs-up fa-bounce"></i> Approve</button><button className="btn btn-outline-danger me-3" onClick={() => { handlereject(eachClass) }}><i className="fa-solid fa-ban fa-bounce"></i> Reject</button></> : ""
+                                    <><button className="btn btn-outline-success me-3" onClick={() => { handleapprove(eachClass) }} ><i className="fa-solid fa-thumbs-up fa-bounce"></i> Approve</button><button className="btn btn-outline-danger me-3" onClick={() => { handlereject(eachClass) }}><i className="fa-solid fa-ban fa-bounce"></i> Reject</button></> : (eachClass.approval === "accepted" && <Alert variant="success">Accepted</Alert>) || (eachClass.approval === "rejected" && <Alert variant="danger">Rejected</Alert>)
 
                             }</td>
-
                         </tr>)
-                    }
+                    : <p className="text-center">No User Found</p>}
                 </tbody>
             </Table>
         </>

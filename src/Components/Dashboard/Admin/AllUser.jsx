@@ -78,8 +78,8 @@ export default function AllUsers() {
 
                             <td>{
                                 currentUser.uid != user.userID ?
-                                    user.userRole === "student" ? <><button className="btn btn-primary me-3" onClick={() => { handleMakeAdmin(user) }}><i class="fa-solid fa-lock"></i> Make Admin</button><button className="btn btn-primary" onClick={() => { handleMakeInstructor(user) }}><i class="fa-solid fa-chalkboard-user"></i> Make Instructor</button></> :
-                                        user.userRole === "instructor" ? <button className="btn btn-primary" onClick={() => { handleMakeAdmin(user) }}><i class="fa-solid fa-lock"></i> Make Admin</button> : <button className="btn btn-primary" onClick={() => { handleMakeInstructor(user) }}><i class="fa-solid fa-chalkboard-user"></i> Make Instructor</button> : ""
+                                    user.userRole === "student" ? <><button className="btn btn-primary me-3" onClick={() => { handleMakeAdmin(user) }}><i className="fa-solid fa-lock"></i> Make Admin</button><button className="btn btn-primary" onClick={() => { handleMakeInstructor(user) }}><i className="fa-solid fa-chalkboard-user"></i> Make Instructor</button></> :
+                                        user.userRole === "instructor" ? <button className="btn btn-primary" onClick={() => { handleMakeAdmin(user) }}><i className="fa-solid fa-lock"></i> Make Admin</button> : <button className="btn btn-primary" onClick={() => { handleMakeInstructor(user) }}><i className="fa-solid fa-chalkboard-user"></i> Make Instructor</button> : ""
                             }</td>
 
                         </tr>)

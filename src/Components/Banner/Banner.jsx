@@ -29,7 +29,7 @@ function Banner() {
       <Carousel.Item>
         <img
           className="d-block carousel-image"
-          src="https://static.seibertron.com/images/toys/files/154/hasbro-cliffjumper-138.jpg"
+          src="https://img.freepik.com/free-photo/mother-teaching-girl-play-guitar_23-2148542821.jpg?w=1480&t=st=1686460400~exp=1686461000~hmac=ede0ebbe460a358d215b899e1b9e1647f659d0e2d939ba17c14bd33f60c7ec0c"
           alt="Third slide"
         />
 

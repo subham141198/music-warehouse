@@ -20,6 +20,7 @@ export default function AllClassOfInstructor() {
         const res = await axiosSecure.get('/class/instructor')
         return res.data;
     })
+
     if(isLoading) return <Spinner animation="border" variant="primary" size="lg"/>
 
 
@@ -33,6 +34,7 @@ export default function AllClassOfInstructor() {
     }
 
     const handleClassUpdate = (data) => {
+        console.log(data)
             setupdatingdata(true);
             console.log(data)
         const formData = new FormData();
@@ -45,7 +47,7 @@ export default function AllClassOfInstructor() {
             .then(imgResponse => {
                 if (imgResponse.success) {
                     const imgURL = imgResponse.data.display_url;
-                    const { _id,className, classImage, instructorName, instructorEmail, classAvailableSeats, classPrice } = data;
+                    const { _id,className, classImage, classAvailableSeats, classPrice } = data;
                     const newItem = { className, classImage: imgURL, classAvailableSeats: parseInt(classAvailableSeats), classPrice: parseFloat(classPrice)}
                     console.log(newItem)
                     axiosSecure.put(`/class/instructor/${_id}`, newItem)
@@ -84,26 +86,26 @@ export default function AllClassOfInstructor() {
                     </tr>
                 </thead>
                 <tbody>
-                    {
+                    {classes?
                         classes.map((eachClass, index) => <tr key={eachClass._id}>
                             <th>{index + 1}</th>
                             <td>{eachClass.className}</td>
                             <td> <img width={50} className="img-fluid" src={eachClass.classImage} /> </td>
                             <td>{eachClass.classPrice}</td>
                             <td>{eachClass.classAvailableSeats}</td>
-                            <td>{eachClass.approval === "pending" && <button className="btn btn-warning" disabled><i class="fa-solid fa-triangle-exclamation"></i> Pending</button>}
-                                {eachClass.approval === "accepted" && <button className="btn btn-success" disabled><i class="fa-solid fa-check"></i> Approved</button>}
-                                {eachClass.approval === "rejected" && <button className="btn btn-danger" disabled><i class="fa-solid fa-ban"></i> Rejected</button>}
+                            <td>{eachClass.approval === "pending" && <button className="btn btn-warning" disabled><i className="fa-solid fa-triangle-exclamation"></i> Pending</button>}
+                                {eachClass.approval === "accepted" && <button className="btn btn-success" disabled><i className="fa-solid fa-check"></i> Approved</button>}
+                                {eachClass.approval === "rejected" && <button className="btn btn-danger" disabled><i className="fa-solid fa-ban"></i> Rejected</button>}
                             </td>
                             <td>{
-                                eachClass.feedback ? eachClass.feedback : ""
+                                eachClass.adminFeedback ? eachClass.adminFeedback : ""
                             }</td>
                             <td>{
                                 <button className="btn btn-outline-primary" onClick={() => openModal(eachClass)}>Update</button>
                             }</td>
 
                         </tr>)
-                    }
+                    : <div className="d-flex justify-content-center align-items-center"><p className="text-center">No Classes Found</p></div>}
                     {
                             selectedClass && (
 
