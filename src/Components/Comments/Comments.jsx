@@ -31,8 +31,16 @@ const Comments = () => {
                 guitar.
               </p>
             </SwiperSlide>
-            <SwiperSlide>Slide 2</SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
+            <SwiperSlide>
+<p>
+The school has everything that children need for successful study: textbooks, daily assignments, planner, notebooks, music sheets, a staff who are very nice and kind, and ready to help at any time.
+</p>
+            </SwiperSlide>
+            <SwiperSlide>
+<p>
+My son has been taking piano and guitar lessons for more than a year. He loves his teachers and I can tell that they really care about my kid too. Your music school is wonderful and I highly recommend.
+</p>
+            </SwiperSlide>
             <SwiperSlide>Slide 4</SwiperSlide>
           </div>
         </Swiper>

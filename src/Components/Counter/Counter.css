@@ -1,0 +1,9 @@
+.count{
+width: 100%;
+background: black;
+margin: 10px;
+margin-bottom: 300px;
+color: black;
+padding: 50px;
+display: flex;
+}

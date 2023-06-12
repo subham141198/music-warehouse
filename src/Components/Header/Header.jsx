@@ -39,10 +39,10 @@ function Header(props) {
 
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar collapseOnSelect expand="lg" bg="light" variant="light" >
         <Container>
           <Navbar.Brand href="/"><img
-            src="https://i.ibb.co/TMq8PPy/Pngtree-cartoon-hand-drawn-toy-convenience-5781180.png"
+            src="https://i.ibb.co/6szLd4f/musicwarehouse.png"
             width="30"
             height="30"
             className="d-inline-block align-top"
@@ -52,13 +52,13 @@ function Header(props) {
           <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-between">
             <Nav className="mr-auto"></Nav>
             <Nav className="me-auto">
-              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link className="" href="/">Home</Nav.Link>
               <Nav.Link href="/instructors">Instructors</Nav.Link>
               <Nav.Link href="/classes">Classes</Nav.Link>
               {user && !isAdmin && !isInstructor &&
                 <>
                   <NavDropdown title="Dashboard" id="collasible-nav-dropdown">
-                    <NavDropdown.Item href="/myclasses">My Classes</NavDropdown.Item>
+                    <NavDropdown.Item className="" href="/myclasses">My Selected Classes</NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item href="/enrolledclasses">My Enrolled Classes</NavDropdown.Item>
                   </NavDropdown>

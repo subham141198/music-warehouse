@@ -146,3 +146,24 @@ height: 546px;
   height: 100%;
   object-fit: cover;
 }
+.login{
+  background-image: url("https://img.freepik.com/free-photo/drums-guitar_1048-1602.jpg?w=996&t=st=1686591762~exp=1686592362~hmac=4ececd9c97a72a45def2c95b9c62e6cb84c093ddea3987413b076be09214b249");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+
+}
+.loginblr{
+  backdrop-filter: blur(10px);
+
+}
+.registar-bg{
+  background-image: url("https://img.freepik.com/free-photo/artist-creating-alternative-bedroom-pop-music_23-2149736780.jpg?w=1380&t=st=1686595768~exp=1686596368~hmac=856eb82cc6e5cbee86728f867169b1d9549508a2190edbffc2a8cff703b1fe50");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.register-blr{
+  backdrop-filter: blur(10px);
+}

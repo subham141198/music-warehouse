@@ -11,6 +11,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import { Link } from "react-router-dom";
 import Banner from '../Components/Banner/Banner';
 import Comments from '../Components/Comments/Comments'
+import Counter from '../Components/Counter/Counter'
 
 
 
@@ -70,6 +71,7 @@ function Home() {
   return (
     <>
       <Banner></Banner>
+<Counter></Counter>
       <Comments></Comments>
 
 

@@ -16,6 +16,9 @@ import AllClassOfInstructor from "../Components/Dashboard/Instructor/AllClass";
 import Instructor from "../Pages/Instructor";
 import ErrorPage from "../Pages/404";
 import Classes from "../Pages/MusicClass";
+import ProtectedRoute from "./ProtectedRoute";
+import mySelectedClasses from "../Components/Dashboard/Student/MySelectedClasses";
+
 
 export const router = createBrowserRouter([
   {
@@ -59,6 +62,10 @@ export const router = createBrowserRouter([
       {
         path: "classes",
         element : <Classes></Classes>
+      },
+      {
+        path: "myclasses",
+        element : <ProtectedRoute><mySelectedClasses></mySelectedClasses></ProtectedRoute>
       }
     ]
   }

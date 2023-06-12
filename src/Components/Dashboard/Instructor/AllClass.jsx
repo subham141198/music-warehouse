@@ -17,11 +17,11 @@ export default function AllClassOfInstructor() {
 
     const [axiosSecure] = useAxiosSecure();
     const { data: classes = [], refetch, isLoading } = useQuery(['classes'], async () => {
-        const res = await axiosSecure.get('/class/instructor')
+        const res = await axiosSecure.get('/classes/instructor')
         return res.data;
     })
 
-    if(isLoading) return <Spinner animation="border" variant="primary" size="lg"/>
+    if(isLoading) return <div className="spinnercontainer"><Spinner animation="border" variant="primary" size="lg" /></div>
 
 
     const openModal = (singleClass) => {

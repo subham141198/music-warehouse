@@ -10,7 +10,7 @@ import { useContext } from "react";
 export default function AllClassApproval() {
     const [axiosSecure] = useAxiosSecure();
     const { data: classes = [], refetch, isLoading } = useQuery(['classes'], async () => {
-        const res = await axiosSecure.get('/class/admin')
+        const res = await axiosSecure.get('/classes/admin')
         return res.data;
     })
     console.log(classes);
