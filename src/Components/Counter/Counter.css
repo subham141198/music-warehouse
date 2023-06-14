@@ -7,3 +7,19 @@ color: black;
 padding: 50px;
 display: flex;
 }
+.square-card{
+    height: 200px;
+    width: 200px;
+}
+
+.inside-content{
+    position: relative;
+}
+.counter-value{
+    position: absolute;
+    z-index: 1;
+    padding: 20px;
+    top: 50px;
+    left: 50px;
+    font-size: 33px;
+}

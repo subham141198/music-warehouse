@@ -18,7 +18,7 @@ export default function AllUsers() {
     const { user } = useContext(AuthContext)
     const currentUser = user;
     const handleMakeAdmin = user => {
-        fetch(`http://localhost:5000/users/admin/${user.userID}`, {
+        fetch(`http://localhost:5000/users/makeadmin/${user.userID}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -37,7 +37,7 @@ export default function AllUsers() {
             })
     }
     const handleMakeInstructor = user => {
-        fetch(`http://localhost:5000/users/instructor/${user.userID}`, {
+        fetch(`http://localhost:5000/users/makeinstructor/${user.userID}`, {
             method: 'PATCH'
         })
             .then(res => res.json())

@@ -18,7 +18,7 @@ export default function AllClassApproval() {
     // const { user } = useContext(AuthContext)
     // const currentUser = user;
     const handleapprove = singleClass => {
-        fetch(`http://localhost:5000/class/admin/${singleClass._id}`, {
+        fetch(`http://localhost:5000/class/rejectbyadmin/${singleClass._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())

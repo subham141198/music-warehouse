@@ -17,7 +17,7 @@ import Instructor from "../Pages/Instructor";
 import ErrorPage from "../Pages/404";
 import Classes from "../Pages/MusicClass";
 import ProtectedRoute from "./ProtectedRoute";
-import mySelectedClasses from "../Components/Dashboard/Student/MySelectedClasses";
+import MySelectedClasses from "../Components/Dashboard/Student/MySelectedClasses";
 
 
 export const router = createBrowserRouter([
@@ -65,7 +65,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "myclasses",
-        element : <ProtectedRoute><mySelectedClasses></mySelectedClasses></ProtectedRoute>
+        element : <ProtectedRoute><MySelectedClasses></MySelectedClasses></ProtectedRoute>
       }
     ]
   }
